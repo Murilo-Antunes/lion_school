@@ -1,13 +1,11 @@
-import { handlerAlunos } from "./main/alunos.js";
 import { criarMain } from "./main/main.js";
+import { getCursos } from "./api/api.js";
 
-handlerAlunos
-criarMain()
+const cursos = await getCursos()
+criarMain(cursos)
 
-document.getElementById('ds').addEventListener('click', () => {
-    handlerAlunos('ds')
-})
+document.getElementById(`botao-sair`).addEventListener(`click`, () => {criarMain(cursos)})
 
-document.getElementById('redes').addEventListener('click', () => {
-    handlerAlunos('redes')
-})
+
+
+

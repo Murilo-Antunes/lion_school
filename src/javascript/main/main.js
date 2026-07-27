@@ -1,4 +1,7 @@
-export const criarMain = ( )=>{
+'use strict'
+import { handlerAlunos } from "./alunos.js"
+
+export const criarMain = (cursos)=>{
     const main = document.getElementById('main')
     main.innerHTML = `
         <div id="hero">
@@ -7,9 +10,17 @@ export const criarMain = ( )=>{
             
         </div>
         <img src="src/img/studant.png" alt="estudante">
-        <div id="buttons">
-            <button class="button" id="ds"><img src="src/img/ds.png" alt="desenvolvimento"> DS</button>
-            <button class="button" id="redes"><img src="src/img/redes.png" alt="redes"> REDES</button>
+        <div id="buttons">   
+            ${cursos.map(curso => `<button class="button" id="${curso.sigla}"><img src="${curso.icon}"alt="redes">REDES</button>`).join('')}
         </div>
     `
+    cursos.forEach(curso => {
+      criarEventoCurso(curso)  
+    })
+}
+
+const criarEventoCurso = (curso) => {
+    document.getElementById(curso.sigla).addEventListener('click', () => {
+        handlerAlunos(curso.sigla.toLowerCase())
+    })
 }
