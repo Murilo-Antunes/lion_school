@@ -47,9 +47,47 @@ const criarCards = (dados, curso) => {
 }
 
 const criarEstrutura = () => {
+    criarBarraStatus()
     const card_container = document.createElement('div')
     card_container.id = 'cards-container'
     main.replaceChildren(card_container)
+}
+
+const criarBarraStatus = () => {
+    const filtro_container = document.getElementById("filtro-container")
+
+    filtro_container.innerHTML = `
+        <section class="filtro">
+            <div class="status-filtro">
+                <button class="status-dropdown" id="status-dropdown">Status</button>
+                <div class="filter-box" id="filter-box">
+                    <label>
+                        <input type="radio" name="filtro" id="todos"  value="todos" checked>
+                        Todos
+                    </label>
+
+                    <label >
+                        <input type="radio" name="filtro" id="finalizado-filtro" value="finalizado">
+                        Finalizado
+                    </label>
+
+                    <label>
+                        <input type="radio" name="filtro" id="cursando-filtro" value="cursando">
+                        Cursando
+                    </label>
+                </div>
+            </div>
+
+            <div class="legenda-container">
+                <h2>Legenda</h2>
+                <div class="cor-legenda cursando"></div>
+                <h3>Cursando</h3>
+                <div class="cor-legenda finalizado"></div>
+                <h3>Finalizado</h3>
+            </div>
+        </section>
+    `
+
 }
 
 export const handlerAlunos = async (curso) => {
@@ -59,3 +97,4 @@ export const handlerAlunos = async (curso) => {
         criarCards(aluno, curso)
     })
 }
+
