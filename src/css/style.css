@@ -74,7 +74,7 @@ section.filtro .filter-box {
     display: none;
 }
 
-section.filtro .filter-box  .ativado{
+section.filtro .filter-box.ativado{
     display: flex;
     flex-direction: column;
     gap: 8px;

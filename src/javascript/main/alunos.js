@@ -1,7 +1,10 @@
 'use strict'
 import { getAllAlunos } from "../api/api.js"
 
+
 const main = document.getElementById('main')
+
+const dados = await getAllAlunos()
 
 const validarAluno = (aluno) => aluno.curso_id === 1
 
@@ -21,8 +24,8 @@ const criarCards = (dados, curso) => {
 
             card.replaceChildren(img, p)
 
-            const card_container = document.getElementById('cards-container')
-            card_container.appendChild(card)
+            const cardContainer = document.getElementById('cards-container')
+            cardContainer.appendChild(card)
         }
     } else if (curso === 'redes') {
         if (!validarAluno(dados)) {
@@ -38,8 +41,8 @@ const criarCards = (dados, curso) => {
 
             card.replaceChildren(img, p)
 
-            const card_container = document.getElementById('cards-container')
-            card_container.appendChild(card)
+            const cardContainer = document.getElementById('cards-container')
+            cardContainer.appendChild(card)
         }
     } else {
         throw new Error("Curso indisponível");
@@ -48,15 +51,15 @@ const criarCards = (dados, curso) => {
 
 const criarEstrutura = () => {
     criarBarraStatus()
-    const card_container = document.createElement('div')
-    card_container.id = 'cards-container'
-    main.replaceChildren(card_container)
+    const cardContainer = document.createElement('div')
+    cardContainer.id = 'cards-container'
+    main.replaceChildren(cardContainer)
 }
 
 const criarBarraStatus = () => {
-    const filtro_container = document.getElementById("filtro-container")
+    const filtroContainer = document.getElementById("filtro-container")
 
-    filtro_container.innerHTML = `
+    filtroContainer.innerHTML = `
         <section class="filtro">
             <div class="status-filtro">
                 <button class="status-dropdown" id="status-dropdown">Status</button>
@@ -87,12 +90,58 @@ const criarBarraStatus = () => {
             </div>
         </section>
     `
+    document.getElementById("status-dropdown").addEventListener('click', () => {
+        const filterBox = document.getElementById("filter-box")
+        if(filterBox.classList.contains("ativado")){
+            filterBox.classList.remove("ativado")
+            return
+        }
+        filterBox.classList.add("ativado")
+    })
+}
 
+const adicionarEventosFiltro = (curso) => {
+    const opcoesFiltro = document.querySelectorAll('input[name="filtro"]')
+    const filterBox = document.getElementById("filter-box")
+
+    opcoesFiltro.forEach(filtro => {
+        filtro.addEventListener('change', async () => {
+            if(filtro.id === 'todos'){
+                const cardContainer = document.getElementById('cards-container')
+                cardContainer.innerHTML = ""
+                filterBox.classList.remove("ativado")
+                dados.forEach(aluno => {
+                    criarCards(aluno, curso)
+                }) 
+            }else if (filtro.id === 'finalizado-filtro'){
+                const cardContainer = document.getElementById('cards-container')
+                cardContainer.innerHTML = ""
+                filterBox.classList.remove("ativado")
+                dados.forEach(aluno => {
+                    if(aluno.status === 'cursando' ){
+                        criarCards(aluno, curso)
+                    }
+                }) 
+
+            }else if (filtro.id === 'cursando-filtro'){
+                const cardContainer = document.getElementById('cards-container')
+                cardContainer.innerHTML = ""
+                filterBox.classList.remove("ativado")
+                dados.forEach(aluno => {
+                    if(aluno.status === 'finalizado' ){
+                        criarCards(aluno, curso)
+                    }
+                }) 
+            }
+        })
+    } )
+
+    
 }
 
 export const handlerAlunos = async (curso) => {
-    const dados = await getAllAlunos()
     criarEstrutura()
+    adicionarEventosFiltro(curso)
     dados.forEach(aluno => {
         criarCards(aluno, curso)
     })
