@@ -93,6 +93,16 @@ section.filtro .filter-box label{
     cursor: pointer;
 }
 
+section.filtro .filter-box input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+section.filtro .filter-box input:checked + .radio-icon {
+    background-color: white;
+}
+
 section.filtro .legenda-container{
     display: flex;
     align-items: center;
@@ -160,6 +170,7 @@ section.filtro .legenda-container div.finalizado{
 .button img{
     width: 70px;
     height: 70px;
+    filter: invert();
 }
 
 footer{
@@ -231,4 +242,71 @@ footer{
 .card img{
     width: 200px;
     border-radius: 50%;
+}
+
+.nota-aluno-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60vw;
+}
+
+.nota-aluno-container .card-aluno{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.52);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 31px 41px;
+    align-items: center;
+}
+
+
+
+.nota-aluno-container .card-aluno .img-container{ 
+    width: 400px;
+    height: 400px;
+
+}
+
+.nota-aluno-container .card-aluno .img-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nota-aluno-container .card-aluno p{
+    color: #3347B0;
+    font-weight: 600;
+    text-shadow: 0px 4px 4px #0000003e;
+}
+
+.notas-container{
+    display: flex;
+    width: 500px;
+    height: 500px;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.52);
+}
+
+.notas-container .pill-nota{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.progress-container{
+    width: 10px;
+    height: 300px;
+    background-color: #EEEFF8;
+    display: flex;
+    align-items: flex-end;
+}
+
+.progress {
+    width: 16px;
+    background-color: #3347B0;
+    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0px 0px 24px #3347B0;
 }

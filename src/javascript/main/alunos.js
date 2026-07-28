@@ -1,5 +1,6 @@
 'use strict'
 import { getAllAlunos } from "../api/api.js"
+import { criarPaginaAluno } from "./aluno.js"
 
 
 const main = document.getElementById('main')
@@ -15,6 +16,7 @@ const criarCards = (dados, curso) => {
             const card = document.createElement('div')
             const img = document.createElement('img')
             const p = document.createElement('p')
+            card.onclick = () =>{criarPaginaAluno(dados)}
 
             card.classList.add('card')
             if(dados.status == 'finalizado') 
@@ -67,16 +69,19 @@ const criarBarraStatus = () => {
                     <label>
                         <input type="radio" name="filtro" id="todos"  value="todos" checked>
                         Todos
+                        <span class="radio-icon"></span>
                     </label>
 
                     <label >
                         <input type="radio" name="filtro" id="finalizado-filtro" value="finalizado">
                         Finalizado
+                        <span class="radio-icon"></span>
                     </label>
 
                     <label>
                         <input type="radio" name="filtro" id="cursando-filtro" value="cursando">
                         Cursando
+                        <span class="radio-icon"></span>
                     </label>
                 </div>
             </div>
