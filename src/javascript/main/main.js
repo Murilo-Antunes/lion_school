@@ -11,7 +11,7 @@ export const criarMain = (cursos)=>{
         </div>
         <img src="src/img/studant.png" alt="estudante">
         <div id="buttons">   
-            ${cursos.map(curso => `<button class="button" id="${curso.sigla}"><img src="${curso.icon}"alt="redes">REDES</button>`).join('')}
+            ${cursos.map(curso => `<button class="button" id="${curso.sigla}"><img src="${curso.icon}"alt="">${curso.sigla}</button>`).join('')}
         </div>
     `
     cursos.forEach(curso => {

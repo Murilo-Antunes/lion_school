@@ -34,6 +34,7 @@ const criarCards = (dados, curso) => {
             const card = document.createElement('div')
             const img = document.createElement('img')
             const p = document.createElement('p')
+            card.onclick = () =>{criarPaginaAluno(dados)}
 
             card.classList.add('card')
             if(dados.status == 'finalizado') 

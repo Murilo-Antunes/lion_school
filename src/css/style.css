@@ -331,3 +331,226 @@ footer{
     border-radius: 5px 5px 0px 0px;
     box-shadow: 0px 0px 24px #3347B0;
 }
+
+/* ===================== RESPONSIVIDADE (MOBILE) ===================== */
+@media (max-width: 600px) {
+
+    header{
+        height: 70px;
+        padding: 0 16px;
+    }
+
+    header img:first-child{
+        width: 90px;
+    }
+
+    header img#botao-sair{
+        width: 26px;
+    }
+
+    /* Página inicial (escolha de curso) */
+    main{
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 32px 24px;
+        gap: 24px;
+        text-align: center;
+    }
+
+    #hero{
+        width: 100%;
+        font-size: 20px;
+        align-items: center;
+    }
+
+    #hero img{
+        display: none;
+    }
+
+    main > img[alt="estudante"]{
+        width: 160px;
+        height: auto;
+    }
+
+    #buttons{
+        width: 100%;
+        gap: 16px;
+    }
+
+    .button{
+        width: 100%;
+        height: 110px;
+        font-size: 32px;
+        box-shadow: 2px 5px 7px 2px var(--shadow-color);
+    }
+
+    .button img{
+        display: none;
+    }
+
+    /* Rodapé */
+    footer{
+        flex-direction: column;
+        height: auto;
+        padding: 24px 20px;
+        gap: 16px;
+        text-align: center;
+    }
+
+    #contacts-container{
+        align-items: center;
+    }
+
+    .contact{
+        justify-content: center;
+    }
+
+    /* Filtro de status e legenda */
+    section.filtro{
+        padding: 12px 16px;
+        align-items: flex-start;
+    }
+
+    section.filtro .legenda-container{
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2px;
+    }
+
+    section.filtro .legenda-container h2{
+        font-size: 13px;
+        width: 100%;
+        text-align: right;
+        margin-bottom: 4px;
+    }
+
+    section.filtro .legenda-container .cor-legenda{
+        display: none;
+    }
+
+    section.filtro .legenda-container h3{
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    section.filtro .legenda-container h3:nth-of-type(1){
+        color: var(--header-background);
+    }
+
+    section.filtro .legenda-container h3:nth-of-type(2){
+        color: var(--finalizado-color);
+    }
+
+    #cards-container{
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        gap: 32px;
+        margin-top: 24px;
+    }
+
+    .card{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--header-background);
+        border-radius: 12px;
+        height: 300px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    .card.finalizado{
+        background-color: var(--finalizado-color);
+    }
+
+    .card img{
+        width: 180px;
+        height: 180px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    .card p{
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* Página do aluno */
+    .nota-aluno-container{
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .nota-aluno-container .card-aluno{
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.35);
+        border-radius: 12px;
+        padding: 20px;
+        width: 85%;
+        max-width: 280px;
+    }
+
+    .nota-aluno-container .card-aluno .img-container{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .notas-container{
+        box-shadow: none;
+        width: 100%;
+        height: auto;
+        padding: 0 8px;
+        gap: 4px;
+    }
+
+    .notas-container .pill-nota{
+        gap: 10px;
+    }
+
+    .notas-container .pill-nota p{
+        font-size: 13px;
+    }
+
+    .notas-container .pill-nota p:last-child{
+        color: var(--header-background);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 11px;
+    }
+
+    .progress-container{
+        width: 6px;
+        height: 140px;
+    }
+
+    .progress{
+        width: 10px;
+    }
+
+    /* Coloração das notas por faixa de valor */
+    .pill-nota.nota-baixa p:first-child{
+        color: #E53935;
+    }
+    .pill-nota.nota-baixa .progress{
+        background-color: #E53935;
+        box-shadow: 0px 0px 24px #E53935;
+    }
+
+    .pill-nota.nota-media p:first-child{
+        color: var(--finalizado-color);
+    }
+    .pill-nota.nota-media .progress{
+        background-color: var(--finalizado-color);
+        box-shadow: 0px 0px 24px var(--finalizado-color);
+    }
+
+    .pill-nota.nota-alta p:first-child{
+        color: var(--header-background);
+    }
+    .pill-nota.nota-alta .progress{
+        background-color: var(--header-background);
+    }
+}

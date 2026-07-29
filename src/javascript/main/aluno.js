@@ -17,14 +17,17 @@ export const criarPaginaAluno = (dados) =>{
 
             <div class="notas-container" id="notas-container">
                 
-                ${dados.desempenho.map(nota => `
-                    <div class="pill-nota">
+                ${dados.desempenho.map(nota => {
+                    const nivel = nota.valor >= 80 ? 'nota-alta' : nota.valor >= 50 ? 'nota-media' : 'nota-baixa'
+                    return `
+                    <div class="pill-nota ${nivel}">
                     <p>${nota.valor}</p>
                     <div class="progress-container">
-                        <div class="progress" style= "height: ${nota.valor}%";></div>
+                        <div class="progress" style="height: ${nota.valor}%"></div>
                     </div>
                     <p>${nota.categoria}</p>
-                </div>`).join("")}
+                </div>`
+                }).join("")}
             </div>
         </div>
     `
