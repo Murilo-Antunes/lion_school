@@ -87,20 +87,41 @@ section.filtro .filter-box.ativado{
 section.filtro .filter-box label{
     text-align: left;
     display: flex;
+    align-items: center;
     gap: 20px;
     justify-content: space-between;
-    flex-direction: row-reverse;
     cursor: pointer;
+    position: relative;
 }
 
 section.filtro .filter-box input{
     position: absolute;
+    inset: 0;
     opacity: 0;
     cursor: pointer;
 }
 
+section.filtro .filter-box .radio-icon{
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border: 2px solid white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: transparent;
+}
+
+section.filtro .filter-box .radio-icon::after{
+    content: '✓';
+}
+
 section.filtro .filter-box input:checked + .radio-icon {
     background-color: white;
+    color: var(--header-background);
 }
 
 section.filtro .legenda-container{

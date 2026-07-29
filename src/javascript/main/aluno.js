@@ -21,7 +21,7 @@ export const criarPaginaAluno = (dados) =>{
                     <div class="pill-nota">
                     <p>${nota.valor}</p>
                     <div class="progress-container">
-                        <div class="progress" "style = height: ${nota.valor}";></div>
+                        <div class="progress" style= "height: ${nota.valor}%";></div>
                     </div>
                     <p>${nota.categoria}</p>
                 </div>`).join("")}
